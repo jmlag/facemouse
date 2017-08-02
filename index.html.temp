@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">    
+    <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    
+    <div id="vid-container">
+        <video id="inputVideo" width="400px" height="400px"></video>
+        <canvas id="drawCanvas" width="400px" height="400px"></canvas>
+    </div>
+    <script src="js/camera.js"></script>
+    <script src="js/clmtrackr.js"></script>
+
+    <script>    
+      var videoInput = document.getElementById('inputVideo');  
+      var ctracker = new clm.tracker();
+      ctracker.init();
+      ctracker.start(videoInput);
+
+      var canvasInput = document.getElementById('drawCanvas');
+      var cc = canvasInput.getContext('2d');
+      function drawLoop() {
+        requestAnimationFrame(drawLoop);
+        cc.clearRect(0, 0, canvasInput.width, canvasInput.height);
+        ctracker.draw(canvasInput);
+      }
+      drawLoop();
+    </script>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</html>
