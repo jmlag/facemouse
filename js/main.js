@@ -1,19 +1,24 @@
+/*
+Code mostly taken from clmtracker examples 
+Copyright (c) 2017 Audun Mathias Øygard
+https://github.com/auduno/clmtrackr/blob/master/LICENSE.txt
+*/
 
-var vid = document.getElementById('videoel');
-var vid_width = vid.width;
-var vid_height = vid.height;
-var overlay = document.getElementById('overlay');
-var overlayCC = overlay.getContext('2d');
+const vid = document.getElementById('videoel');
+const vid_width = vid.width;
+const vid_height = vid.height;
+const overlay = document.getElementById('overlay');
+const overlayCC = overlay.getContext('2d');
 
 /*********** Setup of video/webcam and checking for webGL support *********/
 
 function enablestart() {
-  var startbutton = document.getElementById('startbutton');
+  const startbutton = document.getElementById('startbutton');
   startbutton.value = "start";
   startbutton.disabled = null;
 }
 
-var insertAltVideo = function (video) {
+const insertAltVideo = function (video) {
   // insert alternate video if getUserMedia not available
   if (supports_video()) {
     if (supports_webm_video()) {
@@ -36,7 +41,7 @@ function gumSuccess(stream) {
   }
   vid.onloadedmetadata = function () {
     // resize overlay and video if proportions are different
-    var proportion = vid.videoWidth / vid.videoHeight;
+    const proportion = vid.videoWidth / vid.videoHeight;
     vid_width = Math.round(vid_height * proportion);
     vid.width = vid_width;
     overlay.width = vid_width;
@@ -72,7 +77,7 @@ vid.addEventListener('canplay', enablestart, false);
 
 /*********** Code for face tracking *********/
 
-var ctrack = new clm.tracker({ useWebGL: true });
+const ctrack = new clm.tracker({ useWebGL: true });
 ctrack.init();
 
 function startVideo() {
