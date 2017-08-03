@@ -1,9 +1,3 @@
-/*
-Code taken from clmtracker examples 
-Copyright (c) 2017 Audun Mathias Øygard
-https://github.com/auduno/clmtrackr/blob/master/LICENSE.txt
-*/
-
 const vid = document.getElementById('videoel');
 const overlay = document.getElementById('overlay');
 const vid_width = vid.width;
