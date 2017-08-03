@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "rebuild": "npm rebuild --runtime=electron --target=1.6.2 --disturl=https://atom.io/download/atom-shell --abi=48",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
