@@ -1,5 +1,6 @@
 const currCoords = [];
 let currDisp = [];
+let avgDisp = [];
 
 function getCoords() {
   requestAnimationFrame(getCoords);
@@ -16,7 +17,13 @@ function getCoords() {
   const curr37y = currCoords[1][1][1];
 
   currDisp = [[curr62x - prev62x, curr62y - prev62y], [curr37x - prev37x, curr37y - prev37y]];
-  console.log(currDisp);
+
+  const avg2 = (n1, n2) => (n1 + n2)/2;
+  const avg_dx = avg2(currDisp[0][0], currDisp[1][0]);
+  const avg_dy = avg2(currDisp[0][1], currDisp[1][1]);
+
+  avgDisp = [avg_dx, avg_dy]
+  console.log(avgDisp);
 }
 
 getCoords();
