@@ -1,6 +1,7 @@
 const currCoords = [];
 let currDisp = [];
 let avgDisp = [];
+let avg_dx, avg_dy;
 
 function getCoords() {
   requestAnimationFrame(getCoords);
@@ -18,9 +19,7 @@ function getCoords() {
 
   currDisp = [[curr62x - prev62x, curr62y - prev62y], [curr37x - prev37x, curr37y - prev37y]];
 
-  const avg2 = (n1, n2) => (n1 + n2)/2;
-  const avg_dx = avg2(currDisp[0][0], currDisp[1][0]);
-  const avg_dy = avg2(currDisp[0][1], currDisp[1][1]);
+  getAvgDisp();
 
   const avgPct = (avg, pixels) => {
     if (Math.abs(avg/pixels) < 0.001) return 0;
@@ -29,7 +28,13 @@ function getCoords() {
 
   avgDisp = [-avgPct(avg_dx, 400), avgPct(avg_dy, 300)];
   moveMouse();
-  console.log(avgDisp);
+}
+
+const avg2 = (n1, n2) => (n1 + n2)/2;
+
+function getAvgDisp() {
+  avg_dx = avg2(currDisp[0][0], currDisp[1][0]);
+  avg_dy = avg2(currDisp[0][1], currDisp[1][1]);
 }
 
 const robot = require("robotjs"); 
