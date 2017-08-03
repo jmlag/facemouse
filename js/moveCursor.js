@@ -6,8 +6,8 @@ let avg_dx, avg_dy;
 const robot = require('robotjs');
 const screenSize = robot.getScreenSize();
 
-function getCoords() {
-  requestAnimationFrame(getCoords);
+function moveCursor() {
+  requestAnimationFrame(moveCursor);
   const positions = ctrack.getCurrentPosition();
   if (currCoords.length === 2) currCoords.shift();
   currCoords.push([positions[62], positions[37]]);
@@ -46,8 +46,7 @@ function reduceJitter(){
   // x-coord is negative because robot uses quadrant 4 while clmtrackr uses quadrant 3
 }
 
-/* move the mouse function */
-// const robot = require("robotjs"); 
+/* move the mouse function */ 
 let mousePos; 
 function moveMouse(sensitivity = 6) {
   robot.setMouseDelay(40);
@@ -55,6 +54,4 @@ function moveMouse(sensitivity = 6) {
   robot.moveMouse(avgDisp[0]*screenSize.width*sensitivity + mousePos[0], avgDisp[1]*screenSize.height*sensitivity + mousePos[1]);
 }
 
-// getCoords();
-
-module.exports = getCoords;
+module.exports = moveCursor;
