@@ -20,16 +20,11 @@ function getCoords() {
   currDisp = [[curr62x - prev62x, curr62y - prev62y], [curr37x - prev37x, curr37y - prev37y]];
 
   getAvgDisp();
-
-  const avgPct = (avg, pixels) => {
-    if (Math.abs(avg/pixels) < 0.001) return 0;
-    else return (avg/pixels);
-  }
-
-  avgDisp = [-avgPct(avg_dx, 400), avgPct(avg_dy, 300)];
+  reduceJitter();
+  
   moveMouse();
 }
-
+/* Get average displacement */
 const avg2 = (n1, n2) => (n1 + n2)/2;
 
 function getAvgDisp() {
@@ -37,6 +32,18 @@ function getAvgDisp() {
   avg_dy = avg2(currDisp[0][1], currDisp[1][1]);
 }
 
+/* Disregard displacement under a specific amount to reduce jitter */
+const avgPct = (avg, pixels, smoothness = 0.001) => {
+  if (Math.abs(avg/pixels) < smoothness) return 0;
+  else return (avg/pixels);
+}
+
+function reduceJitter(){
+  avgDisp = [-avgPct(avg_dx, 400), avgPct(avg_dy, 300)];
+  // x-coord is negative because robot uses quadrant 4 while clmtrackr uses quadrant 3
+}
+
+/* move the mouse function */
 const robot = require("robotjs"); 
 let mousePos; 
 function moveMouse(sensitivity = 6) {
