@@ -3,6 +3,8 @@ const overlay = document.getElementById('overlay');
 let vid_width = vid.width;
 const vid_height = vid.height;
 const overlayCC = overlay.getContext('2d');
+const path = require('path');
+const getCoords = require(path.resolve("./js/getCoords"));
 
 /*********** Setup of video/webcam and checking for webGL support *********/
 function gumSuccess(stream) {
@@ -34,6 +36,7 @@ function startVideo() {
   vid.play(); // start video  
   ctrack.start(vid); // start tracking  
   drawLoop();// start loop to draw face
+  getCoords();
 }
 
 function drawLoop() {

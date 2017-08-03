@@ -3,6 +3,9 @@ let currDisp = [];
 let avgDisp = [];
 let avg_dx, avg_dy;
 
+const robot = require('robotjs');
+const screenSize = robot.getScreenSize();
+
 function getCoords() {
   requestAnimationFrame(getCoords);
   const positions = ctrack.getCurrentPosition();
@@ -52,6 +55,6 @@ function moveMouse(sensitivity = 6) {
   robot.moveMouse(avgDisp[0]*screenSize.width*sensitivity + mousePos[0], avgDisp[1]*screenSize.height*sensitivity + mousePos[1]);
 }
 
-getCoords();
+// getCoords();
 
-
+module.exports = getCoords;
