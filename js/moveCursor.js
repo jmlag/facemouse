@@ -3,7 +3,7 @@ let currDisp = [];
 let avgDisp = [];
 let avg_dx, avg_dy;
 
-const robot = require('robotjs');
+const robot = require("robotjs");
 const screenSize = robot.getScreenSize();
 
 function moveCursor() {
