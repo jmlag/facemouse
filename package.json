@@ -1,23 +1,27 @@
 {
   "name": "facemouse",
   "version": "0.0.1",
-  "description": "A minimal Electron application",
+  "description": "A program that controls your mouse using your webcam and face tracking",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "repository": "https://github.com/electron/facemouse",
+  "build": {
+    "appId": "com.facemouse.app"
+  },
+  "repository": "https://github.com/jmlag/facemouse",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "face",
+    "tracking",
+    "mouse"
   ],
-  "author": "GitHub",
+  "author": "jmlag",
   "license": "Apache-2.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "~1.6.2",
+    "electron-builder": "^19.19.1"
   },
   "dependencies": {
     "robotjs": "^0.4.7"
