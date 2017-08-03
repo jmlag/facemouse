@@ -44,12 +44,11 @@ function reduceJitter(){
 }
 
 /* move the mouse function */
-const robot = require("robotjs"); 
+// const robot = require("robotjs"); 
 let mousePos; 
 function moveMouse(sensitivity = 6) {
   robot.setMouseDelay(40);
   mousePos = Object.values(robot.getMousePos());
-  const screenSize = robot.getScreenSize();
   robot.moveMouse(avgDisp[0]*screenSize.width*sensitivity + mousePos[0], avgDisp[1]*screenSize.height*sensitivity + mousePos[1]);
 }
 

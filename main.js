@@ -1,9 +1,9 @@
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const { app, globalShortcut, BrowserWindow } = require('electron');
 
 const path = require('path');
 const url = require('url');
+const robot = require('robotjs');
+const screenSize = robot.getScreenSize();
 
 let mainWindow;
 
@@ -12,15 +12,21 @@ function createWindow () {
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
+    protocol: 'file:', 
     slashes: true
   }));
+
+  globalShortcut.register('CommandOrControl+Space', () => {
+    console.log('CommandOrControl+Space is pressed')
+    robot.moveMouse(screenSize.width/2, screenSize.height/2);
+  })
 
   // Open the DevTools. (commented out by default)
   // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
-    mainWindow = null;
+    mainWindow = null;    
+    globalShortcut.unregisterAll()
   });
 }
 
