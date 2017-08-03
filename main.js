@@ -2,8 +2,7 @@ const { app, globalShortcut, BrowserWindow } = require('electron');
 
 const path = require('path');
 const url = require('url');
-const robot = require('robotjs');
-const screenSize = robot.getScreenSize();
+const shortcuts = require(path.resolve("./js/shortcuts"));
 
 let mainWindow;
 
@@ -16,33 +15,7 @@ function createWindow () {
     slashes: true
   }));
 
-  globalShortcut.register('CommandOrControl+Space', () => {
-    console.log('CommandOrControl+Space is pressed')
-    robot.moveMouse(screenSize.width/2, screenSize.height/2);
-  })
-
-  globalShortcut.register('CommandOrControl+1', () => {
-    console.log('CommandOrControl+1 is pressed')
-    robot.moveMouse(screenSize.width/4, screenSize.height/4);
-  })
-
-  globalShortcut.register('CommandOrControl+2', () => {
-    console.log('CommandOrControl+2 is pressed')
-    robot.moveMouse(screenSize.width/4, screenSize.height*3/4);
-  })
-
-  globalShortcut.register('CommandOrControl+3', () => {
-    console.log('CommandOrControl+3 is pressed')
-    robot.moveMouse(screenSize.width*3/4, screenSize.height*3/4);
-  })
-
-  globalShortcut.register('CommandOrControl+4', () => {
-    console.log('CommandOrControl+4 is pressed')
-    robot.moveMouse(screenSize.width*3/4, screenSize.height/4);
-  })
-
-  // Open the DevTools. (commented out by default)
-  // mainWindow.webContents.openDevTools();
+  shortcuts();
 
   mainWindow.on('closed', function () {
     mainWindow = null;    
