@@ -1,6 +1,6 @@
 const vid = document.getElementById('videoel');
 const overlay = document.getElementById('overlay');
-const vid_width = vid.width;
+let vid_width = vid.width;
 const vid_height = vid.height;
 const overlayCC = overlay.getContext('2d');
 
