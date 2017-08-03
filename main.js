@@ -21,6 +21,26 @@ function createWindow () {
     robot.moveMouse(screenSize.width/2, screenSize.height/2);
   })
 
+  globalShortcut.register('CommandOrControl+1', () => {
+    console.log('CommandOrControl+1 is pressed')
+    robot.moveMouse(screenSize.width/4, screenSize.height/4);
+  })
+
+  globalShortcut.register('CommandOrControl+2', () => {
+    console.log('CommandOrControl+2 is pressed')
+    robot.moveMouse(screenSize.width/4, screenSize.height*3/4);
+  })
+
+  globalShortcut.register('CommandOrControl+3', () => {
+    console.log('CommandOrControl+3 is pressed')
+    robot.moveMouse(screenSize.width*3/4, screenSize.height*3/4);
+  })
+
+  globalShortcut.register('CommandOrControl+4', () => {
+    console.log('CommandOrControl+4 is pressed')
+    robot.moveMouse(screenSize.width*3/4, screenSize.height/4);
+  })
+
   // Open the DevTools. (commented out by default)
   // mainWindow.webContents.openDevTools();
 
