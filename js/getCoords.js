@@ -22,17 +22,25 @@ function getCoords() {
   const avg_dx = avg2(currDisp[0][0], currDisp[1][0]);
   const avg_dy = avg2(currDisp[0][1], currDisp[1][1]);
 
-  avgDisp = [-avg_dx/400, avg_dy/300]
+  const avgPct = (avg, pixels) => {
+    if (Math.abs(avg/pixels) < 0.001) return 0;
+    else return (avg/pixels);
+  }
+
+  avgDisp = [-avgPct(avg_dx, 400), avgPct(avg_dy, 300)];
   moveMouse();
+  console.log(avgDisp);
 }
 
 const robot = require("robotjs"); 
 let mousePos; 
 function moveMouse(sensitivity = 6) {
-  robot.setMouseDelay(2);
+  robot.setMouseDelay(40);
   mousePos = Object.values(robot.getMousePos());
   const screenSize = robot.getScreenSize();
   robot.moveMouse(avgDisp[0]*screenSize.width*sensitivity + mousePos[0], avgDisp[1]*screenSize.height*sensitivity + mousePos[1]);
 }
 
 getCoords();
+
+
