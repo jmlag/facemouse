@@ -4,8 +4,8 @@ let vid_width = vid.width;
 const vid_height = vid.height;
 const overlayCC = overlay.getContext("2d");
 const path = require("path");
-const moveCursor = require(path.resolve("./js/moveCursor"));
-const clm = require(path.resolve("./js/clmtrackr"));
+const moveCursor = require(path.resolve("./app/js/moveCursor"));
+const clm = require(path.resolve("./app/js/clmtrackr"));
 const { ipcRenderer } = require("electron");
 
 /*********** Setup of video/webcam and checking for webGL support *********/
