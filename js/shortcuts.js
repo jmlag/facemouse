@@ -9,16 +9,19 @@ function shortcutGenerator(keySequence, callback) {
   });
 }
 
-function defaultShortcuts() {
-  shortcutGenerator("CommandOrControl+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2));
-
-  shortcutGenerator("CommandOrControl+1", () => robot.moveMouse(screenSize.width/4, screenSize.height/4));
-
-  shortcutGenerator("CommandOrControl+2", () => robot.moveMouse(screenSize.width/4, screenSize.height*3/4));
-
-  shortcutGenerator("CommandOrControl+3", () => robot.moveMouse(screenSize.width*3/4, screenSize.height*3/4));
-
-  shortcutGenerator("CommandOrControl+4", () => robot.moveMouse(screenSize.width*3/4, screenSize.height/4));
+function bulkShortcutGenerator(shortcuts) {
+  shortcuts.forEach(shortcut => shortcutGenerator(...shortcut));
 }
 
-module.exports = { defaultShortcuts, shortcutGenerator };
+function defaultShortcuts() {
+  const defaults = [
+    ["CommandOrControl+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2)],
+    ["CommandOrControl+1", () => robot.moveMouse(screenSize.width/4, screenSize.height/4)],
+    ["CommandOrControl+2", () => robot.moveMouse(screenSize.width/4, screenSize.height*3/4)],
+    ["CommandOrControl+3", () => robot.moveMouse(screenSize.width*3/4, screenSize.height*3/4)],
+    ["CommandOrControl+4", () => robot.moveMouse(screenSize.width*3/4, screenSize.height/4)],    
+  ];
+  bulkShortcutGenerator(defaults);
+}
+
+module.exports = { defaultShortcuts, shortcutGenerator }
