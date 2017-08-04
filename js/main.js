@@ -5,6 +5,7 @@ const vid_height = vid.height;
 const overlayCC = overlay.getContext("2d");
 const path = require("path");
 const moveCursor = require(path.resolve("./js/moveCursor"));
+const clm = require(path.resolve("./js/clmtrackr"));
 
 /*********** Setup of video/webcam and checking for webGL support *********/
 function gumSuccess(stream) {
@@ -46,3 +47,5 @@ function drawLoop() {
     ctrack.draw(overlay);
   }
 }
+
+window.onload = startVideo;
