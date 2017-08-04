@@ -18,7 +18,7 @@ function createWindow () {
   let paused;
 
   defaultShortcuts();
-  shortcutGenerator("esc", () => { 
+  shortcutGenerator("shift+esc", () => { 
     if (!paused) {
       mainWindow.webContents.send("pause"); 
       paused = true;
