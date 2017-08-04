@@ -54,6 +54,7 @@ function drawLoop() {
   }
 }
 
+ipcRenderer.on("start", startVideo);
 ipcRenderer.on("pause", pauseVideo);
 
 window.onload = startVideo;

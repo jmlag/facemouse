@@ -8,7 +8,6 @@ let mainWindow;
 
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-
   
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, "index.html"),
@@ -16,8 +15,18 @@ function createWindow () {
     slashes: true
   }));
 
+  let paused;
+
   defaultShortcuts();
-  shortcutGenerator("esc", () => mainWindow.webContents.send('pause'));
+  shortcutGenerator("esc", () => { 
+    if (!paused) {
+      mainWindow.webContents.send("pause"); 
+      paused = true;
+    } else {
+      mainWindow.webContents.send("start");
+      paused = false;
+    } 
+  });
 
   mainWindow.on("closed", function () {
     mainWindow = null;    
