@@ -2,7 +2,7 @@ const { app, globalShortcut, BrowserWindow } = require("electron");
 
 const path = require("path");
 const url = require("url");
-const shortcuts = require(path.resolve("./js/shortcuts"));
+const { defaultShortcuts, shortcutGenerator }= require(path.resolve("./js/shortcuts"));
 
 let mainWindow;
 
@@ -15,7 +15,8 @@ function createWindow () {
     slashes: true
   }));
 
-  shortcuts();
+  defaultShortcuts();
+  shortcutGenerator("esc", app.quit);
 
   mainWindow.on("closed", function () {
     mainWindow = null;    
