@@ -29,9 +29,21 @@ const defaults6 = [
   ["CommandOrControl+6", () => robot.moveMouse(screenSize.width*5/6, screenSize.height*3/4)],
 ];
 
-function defaultShortcuts() {
+const defaults9 = [
+  ["CommandOrControl+1", () => robot.moveMouse(screenSize.width/6, screenSize.height/6)],
+  ["CommandOrControl+2", () => robot.moveMouse(screenSize.width*3/6, screenSize.height/6)],
+  ["CommandOrControl+3", () => robot.moveMouse(screenSize.width*5/6, screenSize.height/6)],
+  ["CommandOrControl+4", () => robot.moveMouse(screenSize.width/6, screenSize.height*3/6)],
+  ["CommandOrControl+5", () => robot.moveMouse(screenSize.width*3/6, screenSize.height*3/6)],      
+  ["CommandOrControl+6", () => robot.moveMouse(screenSize.width*5/6, screenSize.height*3/6)],  
+  ["CommandOrControl+7", () => robot.moveMouse(screenSize.width/6, screenSize.height*5/6)],
+  ["CommandOrControl+8", () => robot.moveMouse(screenSize.width*3/6, screenSize.height*5/6)],      
+  ["CommandOrControl+9", () => robot.moveMouse(screenSize.width*5/6, screenSize.height*5/6)],
+];
+
+function defaultShortcuts(defaults = defaults4) {
   shortcutGenerator("CommandOrControl+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2));
-  bulkShortcutGenerator(defaults6);
+  bulkShortcutGenerator(defaults);
 }
 
 module.exports = { defaultShortcuts, shortcutGenerator }
