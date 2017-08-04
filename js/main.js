@@ -6,6 +6,7 @@ const overlayCC = overlay.getContext("2d");
 const path = require("path");
 const moveCursor = require(path.resolve("./js/moveCursor"));
 const clm = require(path.resolve("./js/clmtrackr"));
+const { ipcRenderer } = require("electron");
 
 /*********** Setup of video/webcam and checking for webGL support *********/
 function gumSuccess(stream) {
@@ -40,6 +41,11 @@ function startVideo() {
   moveCursor();
 }
 
+function pauseVideo() {
+  vid.pause();
+  ctrack.stop();
+}
+
 function drawLoop() {
   window.requestAnimationFrame(drawLoop);
   overlayCC.clearRect(0, 0, vid_width, vid_height);
@@ -47,5 +53,7 @@ function drawLoop() {
     ctrack.draw(overlay);
   }
 }
+
+ipcRenderer.on("pause", pauseVideo);
 
 window.onload = startVideo;
