@@ -2,7 +2,7 @@ const { app, globalShortcut, BrowserWindow, ipcMain } = require("electron");
 
 const path = require("path");
 const url = require("url");
-const { defaultShortcuts, shortcutGenerator }= require(path.resolve("./app/js/shortcuts"));
+const { defaultShortcuts, shortcutGenerator } = require(path.resolve("./app/js/shortcuts"));
 
 let mainWindow;
 
