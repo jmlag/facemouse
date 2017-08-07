@@ -7,18 +7,15 @@
 	</head>
 	<body>
 		<div id="content">
-			<h2>Face Mouse</h2>
-			<p><i> Your face is a mouse	</i></p>			
-			<br/>
+			<header> <h2>Face Mouse</h2>	<span><i> Your face is a mouse</i></span> </header>
+			<h3> Shortcuts </h3>
+			<p><b>Shift + spacebar</b> moves cursor to centre of screen<br/>
+			<b>Ctrl/cmd + (1-4)</b> moves cursor to centre of one of the four quadrants of your screen<br/>
+			<b>Shift+esc</b> pauses/starts video and tracking</p>
 			<div id="container">
 				<video id="videoel" width="400" height="300"></video>
 				<canvas id="overlay" width="400" height="300"></canvas>
 			</div>
-		</div>		
-		<h3> Shortcuts </h3>
-		<p><b>Ctrl/cmd + spacebar</b> moves cursor to centre of screen<br/>
-		<b>Ctrl/cmd + (1-4)</b> moves cursor to centre of one of the four quadrants of your screen<br/>
-		<b>Shift+esc</b> pauses/starts video and tracking</p>
 		<div id="settings">
 			<h3> Settings </h3>
 			Sensitivity: 
@@ -36,6 +33,7 @@
 			<font size="2.5"> (Range: 0 - 0.003, default: 0.0012) <br/> </font>
 			<font size="2"> <i>Ignores movement under a certain threshold to reduce jitter.</i><br/><br/> </font>
 		</div>
+		</div>		
 		<script src="js/index.js"></script>
 		<script src="js/settings.js"></script>
 	</body>

@@ -42,7 +42,7 @@ const defaults9 = [
 ];
 
 function defaultShortcuts(defaults = defaults4){
-  shortcutGenerator("CommandOrControl+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2));
+  shortcutGenerator("Shift+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2));
   bulkShortcutGenerator(defaults);
 }
 
