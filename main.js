@@ -1,8 +1,8 @@
 const { app, globalShortcut, BrowserWindow, ipcMain } = require("electron");
-
+const appPath = app.getAppPath();
 const path = require("path");
 const url = require("url");
-const { defaultShortcuts, shortcutGenerator } = require(path.resolve("./app/js/shortcuts"));
+const { defaultShortcuts, shortcutGenerator } = require(path.resolve(appPath, "./app/js/shortcuts"));
 
 let mainWindow;
 
@@ -15,6 +15,8 @@ function createWindow (){
     slashes: true
   }));
 
+  // mainWindow.webContents.openDevTools();
+  
   let paused;
 
   defaultShortcuts();

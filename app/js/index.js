@@ -1,12 +1,14 @@
+const { remote, ipcRenderer } = require("electron");
+const appPath = remote.app.getAppPath();
+const path = require("path");
+const moveCursor = require(path.resolve(appPath, "./app/js/moveCursor"));
+const clm = require(path.resolve(appPath, "./app/js/clmtrackr"));
+
 const vid = document.getElementById("videoel");
 const overlay = document.getElementById("overlay");
 let vid_width = vid.width;
 const vid_height = vid.height;
 const overlayCC = overlay.getContext("2d");
-const path = require("path");
-const moveCursor = require(path.resolve("./app/js/moveCursor"));
-const clm = require(path.resolve("./app/js/clmtrackr"));
-const { ipcRenderer } = require("electron");
 
 /*********** Setup of video/webcam and checking for webGL support *********/
 function gumSuccess(stream){

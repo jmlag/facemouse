@@ -1,8 +1,10 @@
 const robot = require("robotjs");
 const screenSize = robot.getScreenSize();
 const settings = require("electron-settings");
+const { remote } = require("electron");
+const appPath = remote.app.getAppPath();
 const path = require("path");
-const { userSettings } = require(path.resolve("./app/js/settings"));
+const { userSettings } = require(path.resolve(appPath, "./app/js/settings"));
 
 const currCoords = [];
 let currDisp = [];
