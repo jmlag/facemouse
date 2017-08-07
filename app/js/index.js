@@ -1,22 +1,24 @@
+const { remote, ipcRenderer } = require("electron");
+const appPath = remote.app.getAppPath();
+const path = require("path");
+const moveCursor = require(path.resolve(appPath, "./app/js/moveCursor"));
+const clm = require(path.resolve(appPath, "./app/js/clmtrackr"));
+
 const vid = document.getElementById("videoel");
 const overlay = document.getElementById("overlay");
 let vid_width = vid.width;
 const vid_height = vid.height;
 const overlayCC = overlay.getContext("2d");
-const path = require("path");
-const moveCursor = require(path.resolve("./app/js/moveCursor"));
-const clm = require(path.resolve("./app/js/clmtrackr"));
-const { ipcRenderer } = require("electron");
 
 /*********** Setup of video/webcam and checking for webGL support *********/
-function gumSuccess(stream) {
+function gumSuccess(stream){
   // add camera stream if getUserMedia succeeded
-  if ("srcObject" in vid) {
+  if ("srcObject" in vid){
     vid.srcObject = stream;
   } else {
     vid.src = (window.URL && window.URL.createObjectURL(stream));
   }
-  vid.onloadedmetadata = function () {
+  vid.onloadedmetadata = function (){
     // resize overlay and video if proportions are different
     const proportion = vid.videoWidth / vid.videoHeight;
     vid_width = Math.round(vid_height * proportion);
@@ -34,22 +36,22 @@ navigator.mediaDevices.getUserMedia({ video: true }).then(gumSuccess).catch(cons
 const ctrack = new clm.tracker({ useWebGL: true });
 ctrack.init();
 
-function startVideo() {  
+function startVideo(){  
   vid.play(); // start video  
   ctrack.start(vid); // start tracking  
   drawLoop();// start loop to draw face
   moveCursor();
 }
 
-function pauseVideo() {
+function pauseVideo(){
   vid.pause();
   ctrack.stop();
 }
 
-function drawLoop() {
+function drawLoop(){
   window.requestAnimationFrame(drawLoop);
   overlayCC.clearRect(0, 0, vid_width, vid_height);
-  if (ctrack.getCurrentPosition()) {
+  if (ctrack.getCurrentPosition()){
     ctrack.draw(overlay);
   }
 }

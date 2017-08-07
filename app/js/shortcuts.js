@@ -2,14 +2,14 @@ const { globalShortcut } = require("electron");
 const robot = require("robotjs");
 const screenSize = robot.getScreenSize();
 
-function shortcutGenerator(keySequence, callback) {
+function shortcutGenerator(keySequence, callback){
   globalShortcut.register(keySequence, () => {
     console.log(keySequence + " is pressed");
     callback();
   });
 }
 
-function bulkShortcutGenerator(shortcuts) {
+function bulkShortcutGenerator(shortcuts){
   shortcuts.forEach(shortcut => shortcutGenerator(...shortcut));
 }
 
@@ -41,7 +41,7 @@ const defaults9 = [
   ["CommandOrControl+9", () => robot.moveMouse(screenSize.width*5/6, screenSize.height*5/6)],
 ];
 
-function defaultShortcuts(defaults = defaults4) {
+function defaultShortcuts(defaults = defaults4){
   shortcutGenerator("CommandOrControl+Space", () => robot.moveMouse(screenSize.width/2, screenSize.height/2));
   bulkShortcutGenerator(defaults);
 }
