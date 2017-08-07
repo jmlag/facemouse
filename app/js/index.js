@@ -44,8 +44,8 @@ function startVideo(){
 }
 
 function pauseVideo(){
-  vid.pause();
   ctrack.stop();
+  vid.pause();
 }
 
 function drawLoop(){
